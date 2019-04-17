@@ -1,26 +1,27 @@
-enablePlugins(JavaServerAppPackaging)
+organization  := "com.goticks"
 
-name := "goticks"
+version       := "0.1"
 
-version := "1.0"
+scalaVersion  := "2.11.6"
 
-organization := "com.goticks" 
+scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
 libraryDependencies ++= {
-  val akkaVersion = "2.4.12"
+  val akkaV = "2.3.9"
+  val sprayV = "1.3.3"
   Seq(
-    "com.typesafe.akka" %% "akka-actor"      % akkaVersion, 
-    "com.typesafe.akka" %% "akka-http-core"  % "2.4.11", 
-    "com.typesafe.akka" %% "akka-http-experimental"  % "2.4.11", 
-    "com.typesafe.akka" %% "akka-http-spray-json-experimental"  % "2.4.11", 
-    "com.typesafe.akka" %% "akka-slf4j"      % akkaVersion,
+    "io.spray"            %%  "spray-can"     % sprayV,
+    "io.spray"            %%  "spray-routing" % sprayV,
+    "io.spray"            %%  "spray-testkit" % sprayV  % "test",
+    "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
+    "com.typesafe.akka"   %% "akka-http-experimental"  % "2.4.11",
+    "com.typesafe.akka" %% "akka-http-spray-json-experimental"  % "2.4.11",
+    "com.typesafe.akka" %% "akka-slf4j"      % akkaV,
     "ch.qos.logback"    %  "logback-classic" % "1.1.3",
-    "com.typesafe.akka" %% "akka-testkit"    % akkaVersion   % "test",
+    "com.typesafe.akka"   %%  "akka-testkit"  % akkaV   % "test",
+    "org.specs2"          %%  "specs2-core"   % "2.3.11" % "test",
     "org.scalatest"     %% "scalatest"       % "2.2.0"       % "test"
   )
 }
 
-// Assembly settings
-mainClass in assembly := Some("com.goticks.Main")
-
-assemblyJarName in assembly := "goticks.jar"
+//Revolver.settings
