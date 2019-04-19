@@ -25,3 +25,10 @@ Forcing a push can be done by nesting commands as well:
 The above pushes the changes in local master to heroku master.
 
 
+Heroku deployment (new version)
+
+	    heroku create
+	  
+After the creation 
+
+      git push heroku master
